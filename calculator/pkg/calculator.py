@@ -9,7 +9,7 @@ class Calculator:
             "/": lambda a, b: a / b,
         }
         self.precedence = {
-            "+": 3,
+            "+": 1,
             "-": 1,
             "*": 2,
             "/": 2,
@@ -22,6 +22,7 @@ class Calculator:
         return self._evaluate_infix(tokens)
 
     def _evaluate_infix(self, tokens):
+        print("DEBUG tokens:", tokens)
         values = []
         operators = []
 
@@ -45,7 +46,8 @@ class Calculator:
 
         if len(values) != 1:
             raise ValueError("invalid expression")
-
+        
+        print("DEBUG final values:", values)
         return values[0]
 
     def _apply_operator(self, operators, values):
